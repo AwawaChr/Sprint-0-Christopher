@@ -174,7 +174,7 @@ public class MainActivity extends AppCompatActivity {
     /*
     private void enviarAlBackend(BeaconData bd) {
         // falta código para enviar BeaconData al API REST remoto
-        
+
     }
 
      */
