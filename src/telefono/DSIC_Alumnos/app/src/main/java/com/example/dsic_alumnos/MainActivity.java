@@ -30,9 +30,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Log.d(ETIQUETA_LOG, "onCreate(): empieza");
-
         inicializarBlueTooth();
-
         Log.d(ETIQUETA_LOG, "onCreate(): termina");
     }
 
@@ -71,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    // ------------------ BOTÓN PARA BUSCAR TODOS LOS DISPOSITIVOS ------------------
+    // ------------------ BOTÓN: BUSCAR TODOS LOS DISPOSITIVOS BTLE ------------------
     public void botonBuscarDispositivosBTLEPulsado(View v) {
         Log.d(ETIQUETA_LOG, "Botón buscar dispositivos BTLE pulsado");
         buscarTodosLosDispositivosBTLE();
@@ -91,16 +89,6 @@ public class MainActivity extends AppCompatActivity {
                 super.onScanResult(callbackType, resultado);
                 mostrarInformacionDispositivoBTLE(resultado);
             }
-
-            @Override
-            public void onBatchScanResults(List<ScanResult> results) {
-                super.onBatchScanResults(results);
-            }
-
-            @Override
-            public void onScanFailed(int errorCode) {
-                super.onScanFailed(errorCode);
-            }
         };
 
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.BLUETOOTH_SCAN) != PackageManager.PERMISSION_GRANTED) {
@@ -109,38 +97,39 @@ public class MainActivity extends AppCompatActivity {
         elEscanner.startScan(callbackDelEscaneo);
     }
 
+    // ------------------ MUESTRA INFO Y ENVÍA AL SERVIDOR ------------------
     private void mostrarInformacionDispositivoBTLE(ScanResult resultado) {
         BluetoothDevice device = resultado.getDevice();
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
             return;
         }
-
-        // Filtrar solo dispositivos llamados "GTI"
         String nombre = device.getName();
+
+        // Filtrar: solo dispositivos con nombre GTI
         if (nombre == null || !nombre.equals("GTI")) {
-            return; // Ignorar dispositivos sin nombre o con otro nombre
+            return;
         }
 
         byte[] bytes = resultado.getScanRecord().getBytes();
-        int rssi = resultado.getRssi();
-
         TramaIBeacon tib = new TramaIBeacon(bytes);
 
-        // Crear objeto con datos procesados
         BeaconData bd = new BeaconData();
         bd.setMajor(Utilidades.bytesToInt(tib.getMajor()));
         bd.setMinor(Utilidades.bytesToInt(tib.getMinor()));
         bd.setTxPower(tib.getTxPower());
         bd.setTimestamp(System.currentTimeMillis());
-        bd.setMac(device.getAddress()); // Cada MAC es una placa
+        bd.setMac(device.getAddress());
 
         Log.d(ETIQUETA_LOG, "Beacon procesado: MAC=" + bd.getMac()
                 + " Major=" + bd.getMajor()
                 + " Minor=" + bd.getMinor()
                 + " TxPower=" + bd.getTxPower());
+
+        // NUEVO: Enviar usando el helper REST
+        APIHelper.enviarMedicion(bd);
     }
 
-    // ------------------ BOTÓN PARA DETENER LA BÚSQUEDA ------------------
+    // ------------------ BOTÓN: DETENER BÚSQUEDA ------------------
     public void botonDetenerBusquedaDispositivosBTLEPulsado(View v) {
         if (callbackDelEscaneo == null) return;
 
@@ -151,9 +140,8 @@ public class MainActivity extends AppCompatActivity {
         callbackDelEscaneo = null;
     }
 
-    // ------------------ BOTÓN OPCIONAL: BUSCAR UN DISPOSITIVO ESPECÍFICO ------------------
+    // ------------------ BOTÓN: BUSCAR DISPOSITIVO GTI ESPECÍFICO ------------------
     public void botonBuscarNuestroDispositivoBTLEPulsado(View v) {
-        // Ejemplo: solo buscar el dispositivo llamado "GTI"
-        // Actualmente todo ya filtra por nombre "GTI" en mostrarInformacionDispositivoBTLE()
+        Log.d(ETIQUETA_LOG, "Botón buscar nuestro dispositivo BTLE pulsado");
     }
 }

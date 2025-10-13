@@ -1,0 +1,32 @@
+// logica/Logica.js
+const mysql = require("mysql2/promise");
+
+class Logica {
+  constructor(configPath) {
+    this.configPath = configPath;
+    this.pool = null;
+    this.inicializarBD();
+  }
+
+  async inicializarBD() {
+    const config = require("../datos/bd_config.json");
+    this.pool = mysql.createPool(config);
+    console.log("Conectado a la base de datos MySQL");
+  }
+
+  async insertarMedicion(mac, major, minor, txPower, timestamp) {
+    const sql = `
+      INSERT INTO mediciones (mac, major, minor, txPower, timestamp)
+      VALUES (?, ?, ?, ?, ?)
+    `;
+    await this.pool.execute(sql, [mac, major, minor, txPower, timestamp]);
+    console.log(`Medición insertada: ${mac}, ${major}, ${minor}, ${txPower}, ${timestamp}`);
+  }
+
+  async obtenerMediciones() {
+    const [rows] = await this.pool.execute("SELECT * FROM mediciones ORDER BY id DESC");
+    return rows;
+  }
+}
+
+module.exports = Logica;
