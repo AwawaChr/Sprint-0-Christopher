@@ -24,7 +24,7 @@ private:
   // ............................................................
 public:
   EmisoraBLE laEmisora {
-	"BeaconChris", //  nombre emisora
+	"GTI", //  nombre emisora
 	  0x004c, // fabricanteID (Apple)
 	  4 // txPower
 	  };
