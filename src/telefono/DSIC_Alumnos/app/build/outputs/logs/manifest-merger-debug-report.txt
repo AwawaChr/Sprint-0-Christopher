@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\chris\Documents\GitHub\Sprint-0-Christopher\src\telefono\DSIC_Alumnos\app\src\main\AndroidManifest.xml:2:1-48:12
-INJECTED from C:\Users\chris\Documents\GitHub\Sprint-0-Christopher\src\telefono\DSIC_Alumnos\app\src\main\AndroidManifest.xml:2:1-48:12
-INJECTED from C:\Users\chris\Documents\GitHub\Sprint-0-Christopher\src\telefono\DSIC_Alumnos\app\src\main\AndroidManifest.xml:2:1-48:12
-INJECTED from C:\Users\chris\Documents\GitHub\Sprint-0-Christopher\src\telefono\DSIC_Alumnos\app\src\main\AndroidManifest.xml:2:1-48:12
+ADDED from C:\Users\chris\Documents\GitHub\Sprint-0-Christopher\src\telefono\DSIC_Alumnos\app\src\main\AndroidManifest.xml:2:1-41:12
+INJECTED from C:\Users\chris\Documents\GitHub\Sprint-0-Christopher\src\telefono\DSIC_Alumnos\app\src\main\AndroidManifest.xml:2:1-41:12
+INJECTED from C:\Users\chris\Documents\GitHub\Sprint-0-Christopher\src\telefono\DSIC_Alumnos\app\src\main\AndroidManifest.xml:2:1-41:12
+INJECTED from C:\Users\chris\Documents\GitHub\Sprint-0-Christopher\src\telefono\DSIC_Alumnos\app\src\main\AndroidManifest.xml:2:1-41:12
 MERGED from [com.google.android.material:material:1.9.0] C:\Users\chris\.gradle\caches\8.13\transforms\9b91003512e3ca10c8e144bbaa5b12ec\transformed\material-1.9.0\AndroidManifest.xml:17:1-26:12
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.0] C:\Users\chris\.gradle\caches\8.13\transforms\62122a06c2fcf79d3e2607d4277dda77\transformed\constraintlayout-2.1.0\AndroidManifest.xml:2:1-11:12
 MERGED from [androidx.appcompat:appcompat-resources:1.5.0] C:\Users\chris\.gradle\caches\8.13\transforms\e0af753ce537944f19e127328780184b\transformed\appcompat-resources-1.5.0\AndroidManifest.xml:17:1-22:12
@@ -56,40 +56,42 @@ MERGED from [androidx.annotation:annotation-experimental:1.1.0] C:\Users\chris\.
 	xmlns:android
 		ADDED from C:\Users\chris\Documents\GitHub\Sprint-0-Christopher\src\telefono\DSIC_Alumnos\app\src\main\AndroidManifest.xml:2:11-69
 uses-permission#android.permission.BLUETOOTH
-ADDED from C:\Users\chris\Documents\GitHub\Sprint-0-Christopher\src\telefono\DSIC_Alumnos\app\src\main\AndroidManifest.xml:6:5-68
+ADDED from C:\Users\chris\Documents\GitHub\Sprint-0-Christopher\src\telefono\DSIC_Alumnos\app\src\main\AndroidManifest.xml:7:5-68
 	android:name
-		ADDED from C:\Users\chris\Documents\GitHub\Sprint-0-Christopher\src\telefono\DSIC_Alumnos\app\src\main\AndroidManifest.xml:6:22-65
+		ADDED from C:\Users\chris\Documents\GitHub\Sprint-0-Christopher\src\telefono\DSIC_Alumnos\app\src\main\AndroidManifest.xml:7:22-65
 uses-permission#android.permission.BLUETOOTH_ADMIN
-ADDED from C:\Users\chris\Documents\GitHub\Sprint-0-Christopher\src\telefono\DSIC_Alumnos\app\src\main\AndroidManifest.xml:7:5-74
+ADDED from C:\Users\chris\Documents\GitHub\Sprint-0-Christopher\src\telefono\DSIC_Alumnos\app\src\main\AndroidManifest.xml:8:5-74
 	android:name
-		ADDED from C:\Users\chris\Documents\GitHub\Sprint-0-Christopher\src\telefono\DSIC_Alumnos\app\src\main\AndroidManifest.xml:7:22-71
+		ADDED from C:\Users\chris\Documents\GitHub\Sprint-0-Christopher\src\telefono\DSIC_Alumnos\app\src\main\AndroidManifest.xml:8:22-71
 uses-permission#android.permission.ACCESS_FINE_LOCATION
-ADDED from C:\Users\chris\Documents\GitHub\Sprint-0-Christopher\src\telefono\DSIC_Alumnos\app\src\main\AndroidManifest.xml:8:5-9:45
+ADDED from C:\Users\chris\Documents\GitHub\Sprint-0-Christopher\src\telefono\DSIC_Alumnos\app\src\main\AndroidManifest.xml:9:5-10:45
 	tools:ignore
-		ADDED from C:\Users\chris\Documents\GitHub\Sprint-0-Christopher\src\telefono\DSIC_Alumnos\app\src\main\AndroidManifest.xml:9:9-42
+		ADDED from C:\Users\chris\Documents\GitHub\Sprint-0-Christopher\src\telefono\DSIC_Alumnos\app\src\main\AndroidManifest.xml:10:9-42
 	android:name
-		ADDED from C:\Users\chris\Documents\GitHub\Sprint-0-Christopher\src\telefono\DSIC_Alumnos\app\src\main\AndroidManifest.xml:8:22-76
-uses-permission#android.permission.BLUETOOTH_CONNECT
-ADDED from C:\Users\chris\Documents\GitHub\Sprint-0-Christopher\src\telefono\DSIC_Alumnos\app\src\main\AndroidManifest.xml:10:5-76
-	android:name
-		ADDED from C:\Users\chris\Documents\GitHub\Sprint-0-Christopher\src\telefono\DSIC_Alumnos\app\src\main\AndroidManifest.xml:10:22-73
-uses-permission#android.permission.BLUETOOTH_SCAN
-ADDED from C:\Users\chris\Documents\GitHub\Sprint-0-Christopher\src\telefono\DSIC_Alumnos\app\src\main\AndroidManifest.xml:11:5-73
-	android:name
-		ADDED from C:\Users\chris\Documents\GitHub\Sprint-0-Christopher\src\telefono\DSIC_Alumnos\app\src\main\AndroidManifest.xml:11:22-70
+		ADDED from C:\Users\chris\Documents\GitHub\Sprint-0-Christopher\src\telefono\DSIC_Alumnos\app\src\main\AndroidManifest.xml:9:22-76
 uses-permission#android.permission.INTERNET
-ADDED from C:\Users\chris\Documents\GitHub\Sprint-0-Christopher\src\telefono\DSIC_Alumnos\app\src\main\AndroidManifest.xml:12:5-66
+ADDED from C:\Users\chris\Documents\GitHub\Sprint-0-Christopher\src\telefono\DSIC_Alumnos\app\src\main\AndroidManifest.xml:11:5-66
 	android:name
-		ADDED from C:\Users\chris\Documents\GitHub\Sprint-0-Christopher\src\telefono\DSIC_Alumnos\app\src\main\AndroidManifest.xml:12:22-64
+		ADDED from C:\Users\chris\Documents\GitHub\Sprint-0-Christopher\src\telefono\DSIC_Alumnos\app\src\main\AndroidManifest.xml:11:22-64
+uses-permission#android.permission.BLUETOOTH_SCAN
+ADDED from C:\Users\chris\Documents\GitHub\Sprint-0-Christopher\src\telefono\DSIC_Alumnos\app\src\main\AndroidManifest.xml:17:5-119
+	android:usesPermissionFlags
+		ADDED from C:\Users\chris\Documents\GitHub\Sprint-0-Christopher\src\telefono\DSIC_Alumnos\app\src\main\AndroidManifest.xml:17:71-117
+	android:name
+		ADDED from C:\Users\chris\Documents\GitHub\Sprint-0-Christopher\src\telefono\DSIC_Alumnos\app\src\main\AndroidManifest.xml:17:22-70
+uses-permission#android.permission.BLUETOOTH_CONNECT
+ADDED from C:\Users\chris\Documents\GitHub\Sprint-0-Christopher\src\telefono\DSIC_Alumnos\app\src\main\AndroidManifest.xml:18:5-76
+	android:name
+		ADDED from C:\Users\chris\Documents\GitHub\Sprint-0-Christopher\src\telefono\DSIC_Alumnos\app\src\main\AndroidManifest.xml:18:22-73
 uses-feature#android.hardware.bluetooth_le
-ADDED from C:\Users\chris\Documents\GitHub\Sprint-0-Christopher\src\telefono\DSIC_Alumnos\app\src\main\AndroidManifest.xml:14:5-89
+ADDED from C:\Users\chris\Documents\GitHub\Sprint-0-Christopher\src\telefono\DSIC_Alumnos\app\src\main\AndroidManifest.xml:21:5-89
 	android:required
-		ADDED from C:\Users\chris\Documents\GitHub\Sprint-0-Christopher\src\telefono\DSIC_Alumnos\app\src\main\AndroidManifest.xml:14:64-87
+		ADDED from C:\Users\chris\Documents\GitHub\Sprint-0-Christopher\src\telefono\DSIC_Alumnos\app\src\main\AndroidManifest.xml:21:64-87
 	android:name
-		ADDED from C:\Users\chris\Documents\GitHub\Sprint-0-Christopher\src\telefono\DSIC_Alumnos\app\src\main\AndroidManifest.xml:14:19-63
+		ADDED from C:\Users\chris\Documents\GitHub\Sprint-0-Christopher\src\telefono\DSIC_Alumnos\app\src\main\AndroidManifest.xml:21:19-63
 application
-ADDED from C:\Users\chris\Documents\GitHub\Sprint-0-Christopher\src\telefono\DSIC_Alumnos\app\src\main\AndroidManifest.xml:16:5-31:19
-INJECTED from C:\Users\chris\Documents\GitHub\Sprint-0-Christopher\src\telefono\DSIC_Alumnos\app\src\main\AndroidManifest.xml:16:5-31:19
+ADDED from C:\Users\chris\Documents\GitHub\Sprint-0-Christopher\src\telefono\DSIC_Alumnos\app\src\main\AndroidManifest.xml:23:5-39:19
+INJECTED from C:\Users\chris\Documents\GitHub\Sprint-0-Christopher\src\telefono\DSIC_Alumnos\app\src\main\AndroidManifest.xml:23:5-39:19
 MERGED from [com.google.android.material:material:1.9.0] C:\Users\chris\.gradle\caches\8.13\transforms\9b91003512e3ca10c8e144bbaa5b12ec\transformed\material-1.9.0\AndroidManifest.xml:24:5-20
 MERGED from [com.google.android.material:material:1.9.0] C:\Users\chris\.gradle\caches\8.13\transforms\9b91003512e3ca10c8e144bbaa5b12ec\transformed\material-1.9.0\AndroidManifest.xml:24:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.0] C:\Users\chris\.gradle\caches\8.13\transforms\62122a06c2fcf79d3e2607d4277dda77\transformed\constraintlayout-2.1.0\AndroidManifest.xml:9:5-20
@@ -109,33 +111,33 @@ MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\chris\.gradle\cach
 	android:appComponentFactory
 		ADDED from [androidx.core:core:1.8.0] C:\Users\chris\.gradle\caches\8.13\transforms\cf740a9969f1834f47289a6ac01a61bd\transformed\core-1.8.0\AndroidManifest.xml:24:18-86
 	android:supportsRtl
-		ADDED from C:\Users\chris\Documents\GitHub\Sprint-0-Christopher\src\telefono\DSIC_Alumnos\app\src\main\AndroidManifest.xml:21:9-35
+		ADDED from C:\Users\chris\Documents\GitHub\Sprint-0-Christopher\src\telefono\DSIC_Alumnos\app\src\main\AndroidManifest.xml:28:9-35
 	android:label
-		ADDED from C:\Users\chris\Documents\GitHub\Sprint-0-Christopher\src\telefono\DSIC_Alumnos\app\src\main\AndroidManifest.xml:19:9-41
+		ADDED from C:\Users\chris\Documents\GitHub\Sprint-0-Christopher\src\telefono\DSIC_Alumnos\app\src\main\AndroidManifest.xml:26:9-41
 	android:roundIcon
-		ADDED from C:\Users\chris\Documents\GitHub\Sprint-0-Christopher\src\telefono\DSIC_Alumnos\app\src\main\AndroidManifest.xml:20:9-54
+		ADDED from C:\Users\chris\Documents\GitHub\Sprint-0-Christopher\src\telefono\DSIC_Alumnos\app\src\main\AndroidManifest.xml:27:9-54
 	android:icon
-		ADDED from C:\Users\chris\Documents\GitHub\Sprint-0-Christopher\src\telefono\DSIC_Alumnos\app\src\main\AndroidManifest.xml:18:9-43
+		ADDED from C:\Users\chris\Documents\GitHub\Sprint-0-Christopher\src\telefono\DSIC_Alumnos\app\src\main\AndroidManifest.xml:25:9-43
 	android:allowBackup
-		ADDED from C:\Users\chris\Documents\GitHub\Sprint-0-Christopher\src\telefono\DSIC_Alumnos\app\src\main\AndroidManifest.xml:17:9-35
+		ADDED from C:\Users\chris\Documents\GitHub\Sprint-0-Christopher\src\telefono\DSIC_Alumnos\app\src\main\AndroidManifest.xml:24:9-35
 	android:theme
-		ADDED from C:\Users\chris\Documents\GitHub\Sprint-0-Christopher\src\telefono\DSIC_Alumnos\app\src\main\AndroidManifest.xml:22:9-50
+		ADDED from C:\Users\chris\Documents\GitHub\Sprint-0-Christopher\src\telefono\DSIC_Alumnos\app\src\main\AndroidManifest.xml:29:9-50
 activity#com.example.dsic_alumnos.MainActivity
-ADDED from C:\Users\chris\Documents\GitHub\Sprint-0-Christopher\src\telefono\DSIC_Alumnos\app\src\main\AndroidManifest.xml:23:9-30:20
+ADDED from C:\Users\chris\Documents\GitHub\Sprint-0-Christopher\src\telefono\DSIC_Alumnos\app\src\main\AndroidManifest.xml:31:9-37:20
 	android:exported
-		ADDED from C:\Users\chris\Documents\GitHub\Sprint-0-Christopher\src\telefono\DSIC_Alumnos\app\src\main\AndroidManifest.xml:24:13-36
+		ADDED from C:\Users\chris\Documents\GitHub\Sprint-0-Christopher\src\telefono\DSIC_Alumnos\app\src\main\AndroidManifest.xml:32:13-36
 	android:name
-		ADDED from C:\Users\chris\Documents\GitHub\Sprint-0-Christopher\src\telefono\DSIC_Alumnos\app\src\main\AndroidManifest.xml:23:19-47
+		ADDED from C:\Users\chris\Documents\GitHub\Sprint-0-Christopher\src\telefono\DSIC_Alumnos\app\src\main\AndroidManifest.xml:31:19-47
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from C:\Users\chris\Documents\GitHub\Sprint-0-Christopher\src\telefono\DSIC_Alumnos\app\src\main\AndroidManifest.xml:25:13-29:29
+ADDED from C:\Users\chris\Documents\GitHub\Sprint-0-Christopher\src\telefono\DSIC_Alumnos\app\src\main\AndroidManifest.xml:33:13-36:29
 action#android.intent.action.MAIN
-ADDED from C:\Users\chris\Documents\GitHub\Sprint-0-Christopher\src\telefono\DSIC_Alumnos\app\src\main\AndroidManifest.xml:26:17-69
+ADDED from C:\Users\chris\Documents\GitHub\Sprint-0-Christopher\src\telefono\DSIC_Alumnos\app\src\main\AndroidManifest.xml:34:17-69
 	android:name
-		ADDED from C:\Users\chris\Documents\GitHub\Sprint-0-Christopher\src\telefono\DSIC_Alumnos\app\src\main\AndroidManifest.xml:26:25-66
+		ADDED from C:\Users\chris\Documents\GitHub\Sprint-0-Christopher\src\telefono\DSIC_Alumnos\app\src\main\AndroidManifest.xml:34:25-66
 category#android.intent.category.LAUNCHER
-ADDED from C:\Users\chris\Documents\GitHub\Sprint-0-Christopher\src\telefono\DSIC_Alumnos\app\src\main\AndroidManifest.xml:28:17-77
+ADDED from C:\Users\chris\Documents\GitHub\Sprint-0-Christopher\src\telefono\DSIC_Alumnos\app\src\main\AndroidManifest.xml:35:17-77
 	android:name
-		ADDED from C:\Users\chris\Documents\GitHub\Sprint-0-Christopher\src\telefono\DSIC_Alumnos\app\src\main\AndroidManifest.xml:28:27-74
+		ADDED from C:\Users\chris\Documents\GitHub\Sprint-0-Christopher\src\telefono\DSIC_Alumnos\app\src\main\AndroidManifest.xml:35:27-74
 uses-sdk
 INJECTED from C:\Users\chris\Documents\GitHub\Sprint-0-Christopher\src\telefono\DSIC_Alumnos\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Users\chris\Documents\GitHub\Sprint-0-Christopher\src\telefono\DSIC_Alumnos\app\src\main\AndroidManifest.xml
