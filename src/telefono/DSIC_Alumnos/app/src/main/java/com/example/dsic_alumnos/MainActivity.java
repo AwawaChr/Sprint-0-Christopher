@@ -15,7 +15,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.net.URLEncoder;
 import java.util.List;
+import java.util.concurrent.Executors;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -43,7 +48,6 @@ public class MainActivity extends AppCompatActivity {
         bta.enable();
         this.elEscanner = bta.getBluetoothLeScanner();
 
-        // Pedir permisos si no los tenemos
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.BLUETOOTH) != PackageManager.PERMISSION_GRANTED
                 || ContextCompat.checkSelfPermission(this, Manifest.permission.BLUETOOTH_ADMIN) != PackageManager.PERMISSION_GRANTED
                 || ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
@@ -89,6 +93,16 @@ public class MainActivity extends AppCompatActivity {
                 super.onScanResult(callbackType, resultado);
                 mostrarInformacionDispositivoBTLE(resultado);
             }
+
+            @Override
+            public void onBatchScanResults(List<ScanResult> results) {
+                super.onBatchScanResults(results);
+            }
+
+            @Override
+            public void onScanFailed(int errorCode) {
+                super.onScanFailed(errorCode);
+            }
         };
 
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.BLUETOOTH_SCAN) != PackageManager.PERMISSION_GRANTED) {
@@ -97,7 +111,6 @@ public class MainActivity extends AppCompatActivity {
         elEscanner.startScan(callbackDelEscaneo);
     }
 
-    // ------------------ MUESTRA INFO Y ENVÍA AL SERVIDOR ------------------
     private void mostrarInformacionDispositivoBTLE(ScanResult resultado) {
         BluetoothDevice device = resultado.getDevice();
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
@@ -105,10 +118,8 @@ public class MainActivity extends AppCompatActivity {
         }
         String nombre = device.getName();
 
-        // Filtrar: solo dispositivos con nombre GTI
-        if (nombre == null || !nombre.equals("GTI")) {
-            return;
-        }
+        // Filtrar: solo dispositivos GTI
+        if (nombre == null || !nombre.equals("GTI")) return;
 
         byte[] bytes = resultado.getScanRecord().getBytes();
         TramaIBeacon tib = new TramaIBeacon(bytes);
@@ -125,23 +136,105 @@ public class MainActivity extends AppCompatActivity {
                 + " Minor=" + bd.getMinor()
                 + " TxPower=" + bd.getTxPower());
 
-        // NUEVO: Enviar usando el helper REST
-        APIHelper.enviarMedicion(bd);
+        enviarDatosAlServidor(bd);
+    }
+
+    private void enviarDatosAlServidor(BeaconData bd) {
+        Executors.newSingleThreadExecutor().execute(() -> {
+            try {
+                URL url = new URL("http://10.97.245.133:8080/insertar");
+                String postData = "mac=" + URLEncoder.encode(bd.getMac(), "UTF-8")
+                        + "&major=" + bd.getMajor()
+                        + "&minor=" + bd.getMinor()
+                        + "&txPower=" + bd.getTxPower()
+                        + "&timestamp=" + bd.getTimestamp();
+
+                HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                conn.setRequestMethod("POST");
+                conn.setDoOutput(true);
+
+                OutputStream os = conn.getOutputStream();
+                os.write(postData.getBytes());
+                os.flush();
+                os.close();
+
+                int responseCode = conn.getResponseCode();
+                Log.d(ETIQUETA_LOG, "HTTP POST response: " + responseCode);
+
+                conn.disconnect();
+            } catch (Exception e) {
+                Log.e(ETIQUETA_LOG, "Error enviando datos: " + e.getMessage());
+            }
+        });
     }
 
     // ------------------ BOTÓN: DETENER BÚSQUEDA ------------------
     public void botonDetenerBusquedaDispositivosBTLEPulsado(View v) {
         if (callbackDelEscaneo == null) return;
-
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.BLUETOOTH_SCAN) != PackageManager.PERMISSION_GRANTED) {
-            return;
-        }
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.BLUETOOTH_SCAN) != PackageManager.PERMISSION_GRANTED) return;
         elEscanner.stopScan(callbackDelEscaneo);
         callbackDelEscaneo = null;
     }
 
-    // ------------------ BOTÓN: BUSCAR DISPOSITIVO GTI ESPECÍFICO ------------------
+    // ------------------ BOTÓN: BUSCAR NUESTRO DISPOSITIVO (TODOS NO NULL) ------------------
     public void botonBuscarNuestroDispositivoBTLEPulsado(View v) {
         Log.d(ETIQUETA_LOG, "Botón buscar nuestro dispositivo BTLE pulsado");
+
+        if (elEscanner == null) {
+            Log.d(ETIQUETA_LOG, "elEscanner es null, no puedo escanear");
+            return;
+        }
+
+        callbackDelEscaneo = new ScanCallback() {
+            @Override
+            public void onScanResult(int callbackType, ScanResult resultado) {
+                super.onScanResult(callbackType, resultado);
+                BluetoothDevice device = resultado.getDevice();
+                if (ActivityCompat.checkSelfPermission(MainActivity.this, Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) return;
+
+                String nombre = device.getName();
+                String mac = device.getAddress();
+                byte[] bytes = resultado.getScanRecord().getBytes();
+
+                int major = 0, minor = 0, txPower = 0;
+                try {
+                    TramaIBeacon tib = new TramaIBeacon(bytes);
+                    major = Utilidades.bytesToInt(tib.getMajor());
+                    minor = Utilidades.bytesToInt(tib.getMinor());
+                    txPower = tib.getTxPower();
+                } catch (Exception ignored) {}
+
+                // Mostrar cualquier dispositivo que tenga MAC o nombre
+                if (nombre != null || mac != null) {
+                    Log.d(ETIQUETA_LOG, "Dispositivo detectado -> Nombre: " + nombre
+                            + ", MAC: " + mac
+                            + ", Major: " + major
+                            + ", Minor: " + minor
+                            + ", TxPower: " + txPower);
+
+                    BeaconData bd = new BeaconData();
+                    bd.setMac(mac);
+                    bd.setMajor(major);
+                    bd.setMinor(minor);
+                    bd.setTxPower(txPower);
+                    bd.setTimestamp(System.currentTimeMillis());
+
+                    enviarDatosAlServidor(bd);
+                }
+            }
+
+            @Override
+            public void onBatchScanResults(List<ScanResult> results) {
+                super.onBatchScanResults(results);
+            }
+
+            @Override
+            public void onScanFailed(int errorCode) {
+                super.onScanFailed(errorCode);
+            }
+        };
+
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.BLUETOOTH_SCAN) != PackageManager.PERMISSION_GRANTED) return;
+        elEscanner.startScan(callbackDelEscaneo);
     }
 }
